@@ -1,7 +1,9 @@
 <template>
 <div class="hero d-flex progressive replace">
-  <div class="accent_border">
+  <div class="accent_border text-center">
 <span class="slogan">Высокачественная народная одежда от<br>российских производителей</span>
+<br>
+<button class="button_beige mt-5">Купить</button>
 </div>
 </div>
 </template>
@@ -35,6 +37,14 @@ background-size: cover;
     margin: 13vh 5vw 5vh 5vw;
     width: 100%;
     max-width: 90vw;
-    padding: 20vh 5vw;
+    padding: 20vh 30vw 20vh 5vw;
+}
+.button_beige{
+    background: #B97E5E;
+border-radius: 50px;
+color: #fff;
+border: none;
+padding: 10px 30px;
+font-size: 24px;
 }
 </style>

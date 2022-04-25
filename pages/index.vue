@@ -1,5 +1,9 @@
 <template>
+<div>
 <HeroMain/>
+<Search/>
+<PopularBrands/>
+</div>
 </template>
 
 <script>

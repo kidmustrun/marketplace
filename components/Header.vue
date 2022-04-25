@@ -1,7 +1,8 @@
 <template>
   <nav
     class="navbar navbar-expand-lg navbar-dark fixed-top"
-    :class="{ 'bg-dark': width<992 }"
+    :class="{ 'bg-dark': width<992 || scroll>20}"
+
   >
     <div class="container-fluid">
       <a class="navbar-brand" href="#"><b>ЯРМАРКОФФ</b></a>
@@ -46,21 +47,36 @@ export default {
   name: 'Header',
   data: () => ({
   width: 1000,
+  scroll: 0
 }),
 methods: {
   updateWidth() {
     this.width = window.innerWidth;
   },
+  updateScroll() {
+    this.scroll = window.scrollY;
+  },
 },
 mounted() {
   window.addEventListener('resize', this.updateWidth);
   this.width = window.innerWidth;
+  window.addEventListener('scroll', this.updateScroll);
+  this.scroll = window.scrollY;
+
 },
 }
 </script>
 <style scoped>
-.navbar {
-  padding: 20px;
+*{
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+.navbar{
+  width: 100vw;
+}
+.container-fluid {
+  margin: 20px;
 }
 img {
   height: max(1em, min(1.3em, calc(100vw * 4 / 75)));
