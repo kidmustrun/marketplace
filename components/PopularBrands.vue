@@ -99,6 +99,15 @@ export default {
   justify-content: center;
   z-index: 35;
 }
+@supports (-moz-appearance:none) {
+ .blur {
+     background: rgba(246, 246, 246, 0.8);
+ }
+ .blur h2 a{
+color: #000 !important;
+text-decoration: none;
+}
+}
 .blur h2 a{
 color: #fff;
 text-decoration: none;

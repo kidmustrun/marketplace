@@ -1,7 +1,7 @@
 <template>
 <div class="container mt-5">
     <h1>Хиты продаж</h1>
-    <div class="row">
+    <div class="row mt-4">
         <div class="col-md-6">
             <div class="row">
                 <div class="col-6">
