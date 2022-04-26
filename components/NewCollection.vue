@@ -79,6 +79,7 @@ img {
     box-sizing: border-box;
     width: 100%;
     order: -1 !important;
+    height: auto;
   }
 }
 </style>
