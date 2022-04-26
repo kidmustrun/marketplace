@@ -1,6 +1,6 @@
 <template>
   <div class="new_collection mt-5 row ms-0 me-0">
-    <div class="col-sm">
+    <div class="col-sm p-0">
       <img src="~/assets/new_collection.png" />
     </div>
     <div class="new_collection_text text-center col-sm">
@@ -27,19 +27,20 @@ export default {
 .new_collection_text {
   background-color: #0d2c48;
   color: #fff;
-  padding: 10vh 20vw;
-  position: absolute;
+  padding: 10vh 10vw;
+  position: relative;
+  right: 0;
   top: 10vh;
-  left: 30vw;
-  width: 70vw;
+  height: 60vh;
 }
 .new_collection_text p {
   font-size: max(1em, min(1.3em, calc(100vw * 4 / 75)));
 }
 img {
   width: 35vw;
-  position: absolute;
+  position: relative;
   left: 0;
+  object-fit: cover;
   z-index: 1;
 }
 .button_beige {
@@ -50,19 +51,20 @@ img {
   padding: 10px 30px;
   font-size: 24px;
 }
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1200px) {
   .new_collection {
     position: static;
   }
   .new_collection_text {
     position: static;
-    padding: 10vh 10vw;
+    height: 65vh;
   }
   img {
     width: 45vw;
     position: static;
     object-fit: cover;
-    height: 100%;
+    height: 65vh;
+    object-position: top;
   }
 }
 @media screen and (max-width: 576px) {

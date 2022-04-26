@@ -2,7 +2,7 @@
 <div class="container mt-5">
     <h1>Хиты продаж</h1>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-md-6">
             <div class="row">
                 <div class="col-6">
                     <img src="~/assets/stillaga.png" />
@@ -14,12 +14,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-md-6">
             <div class="row">
                 <div class="col-6">
                     <img src="~/assets/tetris.png" />
                 </div>
-                <div class="col-6 p-5 description_blue text-center">
+                <div class="col-6 p-5 description_blue text-center reorder">
                     <h2>Сарафан Tetris</h2>
                     <br>
                     <p>2500р</p>
@@ -28,26 +28,26 @@
         </div>
     </div>
     <div class="row">
-          <div class="col-sm-6">
+          <div class="col-md-6">
             <div class="row">
-                 <div class="col-6 p-5 text-center description_violet">
+                 <div class="col-6 p-5 text-center description_violet ">
                     <h2>Платье Stillaga</h2>
                     <br>
                     <p>2500р</p>
                 </div>
-                <div class="col-6">
+                <div class="col-6 reorder">
                     <img src="~/assets/stillaga_dress.png" />
                 </div>
             </div>
           </div>
-          <div class="col-sm-6">
+          <div class="col-md-6">
             <div class="row">
                  <div class="col-6 p-5 text-center description_violet">
                     <h2>Платье Stillaga</h2>
                     <br>
                     <p>2500р</p>
                 </div>
-                <div class="col-6">
+                <div class="col-6 ">
                     <img src="~/assets/stillaga_dress.png" />
                 </div>
             </div>
@@ -78,5 +78,12 @@ img{
 }
 .col-6{
     padding: 0 
+}
+@media screen and (max-width: 768px) {
+    .reorder{
+         order: -1 !important;
+    }
+
+    
 }
 </style>
