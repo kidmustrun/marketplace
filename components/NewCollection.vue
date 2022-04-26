@@ -1,6 +1,6 @@
 <template>
   <div class="new_collection mt-5 row ms-0 me-0">
-    <div class="col-sm p-0">
+    <div class="col-sm">
       <img src="~/assets/new_collection.png" />
     </div>
     <div class="new_collection_text text-center col-sm">
@@ -10,7 +10,7 @@
         стиляг<br />
         Только качественные материалы и работа профессионалов
       </p>
-      <button class="button_beige mt-5">Смотреть</button>
+      <button class="button_beige mt-5">Купить</button>
     </div>
   </div>
 </template>
@@ -27,20 +27,19 @@ export default {
 .new_collection_text {
   background-color: #0d2c48;
   color: #fff;
-  padding: 10vh 15vw;
-  position: relative;
-  right: 0;
-  top: 5vh;
-  height: 70%;
+  padding: 10vh 20vw;
+  position: absolute;
+  top: 10vh;
+  left: 30vw;
+  width: 70vw;
 }
 .new_collection_text p {
   font-size: max(1em, min(1.3em, calc(100vw * 4 / 75)));
 }
 img {
-  position: relative;
+  width: 35vw;
+  position: absolute;
   left: 0;
-  object-fit: cover;
-    width: 35vw;
   z-index: 1;
 }
 .button_beige {
@@ -51,12 +50,13 @@ img {
   padding: 10px 30px;
   font-size: 24px;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 992px) {
   .new_collection {
     position: static;
   }
   .new_collection_text {
     position: static;
+    padding: 10vh 10vw;
   }
   img {
     width: 45vw;
