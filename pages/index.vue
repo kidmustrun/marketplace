@@ -4,6 +4,7 @@
 <Search/>
 <PopularBrands/>
 <NewCollection/>
+<SalesHits/>
 </div>
 </template>
 
