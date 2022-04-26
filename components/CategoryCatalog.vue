@@ -8,7 +8,7 @@
       <li class="breadcrumb-item"><a href="#">Каталог</a></li>
       <li class="breadcrumb-item active" aria-current="page">Платья</li>
     </ol>
-        <ul class="nav flex-column ">
+        <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Все модели</a>
           </li>
@@ -27,7 +27,7 @@
       </div>
       <div class="col-9">
           <h2>Все модели</h2>
-          <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
               <ItemCard/>
               <ItemCard/>
               <ItemCard/>
