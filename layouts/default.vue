@@ -1,8 +1,6 @@
 <template>
 <div class="default">
-<div class="position-relative">
 <Header/>
-</div>
      <Nuxt />
      </div>
 </template>
@@ -14,7 +12,7 @@ export default {
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
-.default{
+body {
     overflow-x: hidden;
     font-family: 'Jost', sans-serif;
 }

@@ -3,6 +3,7 @@
 <HeroMain/>
 <Search/>
 <PopularBrands/>
+<NewCollection/>
 </div>
 </template>
 
