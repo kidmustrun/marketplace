@@ -4,7 +4,7 @@
       <div class="col-md-6 col">
         <div class="row">
           <div class="flex-md-column col-4 col-xxl-2">
-            <div class="prewiew mt-3">
+            <div class="prewiew mt-3 active_img">
               <img src="~/assets/dress_in_block.png" />
             </div>
             <div class="prewiew mt-3">
@@ -142,7 +142,24 @@
       </div>
     </div>
     <div class="similar_products mt-5">
-        <h1>Другие товары продавца</h1>
+      <h1>Другие товары продавца</h1>
+      <div class="row mt-4">
+        <div class="col">
+          <ItemCard />
+        </div>
+        <div class="col">
+          <ItemCard />
+        </div>
+        <div class="col">
+          <ItemCard />
+        </div>
+        <div class="col">
+          <ItemCard />
+        </div>
+        <div class="col">
+          <ItemCard />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -155,9 +172,13 @@ export default {
 <style scoped>
 .prewiew img {
   height: 20vh;
+  opacity: 0.5;
 }
 .full-size img {
   height: 80vh;
+}
+.active_img img {
+  opacity: 1 !important;
 }
 .price {
   font-size: 32px;
@@ -165,7 +186,7 @@ export default {
 .button_card {
   border: 1px solid #000;
   background-color: #fff;
-  height: 70px;
+  height: 60px;
   width: 100%;
 }
 </style>
