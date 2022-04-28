@@ -1,38 +1,39 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-md-6 col">
-        <div class="row">
-          <div class="flex-md-column col-4 col-xxl-2">
-            <div class="prewiew mt-3 active_img">
-              <img src="~/assets/dress_in_block.png" />
-            </div>
-            <div class="prewiew mt-3">
-              <img src="~/assets/dress_in_block.png" />
-            </div>
-            <div class="prewiew mt-3">
-              <img src="~/assets/dress_in_block.png" />
-            </div>
-            <div class="prewiew mt-3">
-              <img src="~/assets/dress_in_block.png" />
-            </div>
-          </div>
-
-          <div class="col-8 col-xxl-10">
-            <div class="full-size mt-5">
-              <img src="~/assets/dress_in_block.png" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col mt-5">
-        <ol class="breadcrumb">
+              <ol class="breadcrumb mt-5">
           <li class="breadcrumb-item"><a href="#">Каталог</a></li>
           <li class="breadcrumb-item"><a href="#">Платье</a></li>
           <li class="breadcrumb-item active" aria-current="page">
             Платье "Весенний кэжуал"
           </li>
         </ol>
+    <div class="row">
+      <div class="col-xl-6 col-md-12 col-12 text-center">
+        <div class="row">
+          <div class="d-flex flex-xxl-column flex-row col-xxl-2 order-xxl-first order-last justify-content-center">
+            <div class="prewiew mt-3 me-xxl-0 me-2 active_img">
+              <img src="~/assets/dress_in_block.png" />
+            </div>
+            <div class="prewiew mt-3 me-xxl-0 me-2">
+              <img src="~/assets/dress_in_block.png" />
+            </div>
+            <div class="prewiew mt-3 me-xxl-0 me-2">
+              <img src="~/assets/dress_in_block.png" />
+            </div>
+            <div class="prewiew mt-3 me-xxl-0 me-2">
+              <img src="~/assets/dress_in_block.png" />
+            </div>
+          </div>
+
+          <div class="col-xxl-10">
+            <div class="full-size mt-5">
+              <img src="~/assets/dress_in_block.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-md-12 col mt-5 p-xxl-0 p-5">
+
         <h1>Платье "Весенний кэжуал"</h1>
         <select class="form-select" name="size">
           <option disabled selected>Размеры</option>
@@ -43,15 +44,18 @@
           <option value="xl">XL</option>
         </select>
         <div class="row mt-4">
-          <div class="col-3 d-flex align-items-center">
+          <div class="col-md-5 col-12 d-flex align-items-center">
             <span class="price">5999 руб</span>
           </div>
-          <div class="col-6">
+          <div class="col-md-5 col-8">
             <button class="button_card">ДОБАВИТЬ В КОРЗИНУ</button>
           </div>
-          <div class="col-2">
+          <div class="col-md-2 col-4">
             <button class="button_card button_like">
-              <img src="~/assets/heart.svg" />
+              <svg width="36" height="31" viewBox="0 0 36 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.66659 1.75C5.06492 1.75 1.33325 5.25867 1.33325 9.5875C1.33325 13.0819 2.79159 21.3754 17.1466 29.7592C17.4037 29.9078 17.6989 29.9864 17.9999 29.9864C18.3009 29.9864 18.5961 29.9078 18.8533 29.7592C33.2083 21.3754 34.6666 13.0819 34.6666 9.5875C34.6666 5.25867 30.9349 1.75 26.3333 1.75C21.7316 1.75 17.9999 6.5 17.9999 6.5C17.9999 6.5 14.2683 1.75 9.66659 1.75Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
             </button>
           </div>
         </div>
@@ -173,9 +177,15 @@ export default {
 .prewiew img {
   height: 20vh;
   opacity: 0.5;
+    transition: 0.3s ease;
+}
+.prewiew img:hover {
+  opacity: 1;
+  transition: 0.3s ease;
 }
 .full-size img {
   height: 80vh;
+  object-fit: cover;
 }
 .active_img img {
   opacity: 1 !important;
@@ -188,5 +198,19 @@ export default {
   background-color: #fff;
   height: 60px;
   width: 100%;
+  transition: 0.3s ease;
+}
+.button_card:hover{
+    color: #fff;
+    background-color: #000;
+    transition: 0.3s ease;
+}
+.button_like:hover{
+    background-color: #fff;
+    transition: 0.3s ease;
+}
+.button_like:hover svg{
+    fill: #ff0d1989;
+    transition: 0.3s ease;
 }
 </style>

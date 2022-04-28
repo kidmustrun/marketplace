@@ -74,6 +74,7 @@ mounted() {
 }
 .navbar{
   width: 100vw;
+  transition: 0.3s ease;
 }
 .container-fluid {
   margin: 20px;
