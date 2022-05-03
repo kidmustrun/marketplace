@@ -1,11 +1,10 @@
 <template>
   <nav
     class="navbar navbar-expand-lg navbar-dark fixed-top"
-    :class="{ 'bg-dark': width<992 || scroll>20}"
-
+    :class="{ 'bg-dark': width < 992 || scroll > 20 }"
   >
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><b>ЯРМАРКОФФ</b></a>
+      <NuxtLink class="navbar-brand" to="/"><b>ЯРМАРКОФФ</b></NuxtLink>
       <button
         class="navbar-toggler"
         type="button"
@@ -19,14 +18,102 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Женщинам</a>
+          <li class="nav-item dropdown">
+            <span
+              class="nav-link dropdown-toggle"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Женщинам
+            </span>
+            <ul
+              v-if="categories_women[0]"
+              class="dropdown-menu"
+              aria-labelledby="navbarDropdownMenuLink"
+            >
+              <li v-for="category in categories_women" :key="category.id">
+                <NuxtLink
+                  class="dropdown-item"
+                  :to="`/catalog/${category.trans}?gender=female&rus=${category.title}`"
+                  >{{ category.title }}</NuxtLink
+                >
+              </li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Мужчинам</a>
+          <li class="nav-item dropdown">
+            <span
+              class="nav-link dropdown-toggle"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Мужчинам
+            </span>
+            <ul
+              v-if="categories_men[0]"
+              class="dropdown-menu"
+              aria-labelledby="navbarDropdownMenuLink"
+            >
+              <li v-for="category in categories_men" :key="category.id">
+                <NuxtLink
+                  class="dropdown-item"
+                  :to="`/catalog/${category.trans}?gender=male&rus=${category.title}`"
+                  >{{ category.title }}</NuxtLink
+                >
+              </li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Детям</a>
+          <li class="nav-item dropdown">
+            <span
+              class="nav-link dropdown-toggle"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Девочкам
+            </span>
+            <ul
+              v-if="categories_women[0]"
+              class="dropdown-menu"
+              aria-labelledby="navbarDropdownMenuLink"
+            >
+              <li v-for="category in categories_women" :key="category.id">
+                <NuxtLink
+                  class="dropdown-item"
+                  :to="`/catalog/${category.trans}?gender=girl&rus=${category.title}`"
+                  >{{ category.title }}</NuxtLink
+                >
+              </li>
+            </ul>
+          </li>
+           <li class="nav-item dropdown">
+            <span
+              class="nav-link dropdown-toggle"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Мальчикам
+            </span>
+            <ul
+              v-if="categories_men[0]"
+              class="dropdown-menu"
+              aria-labelledby="navbarDropdownMenuLink"
+            >
+              <li v-for="category in categories_men" :key="category.id">
+                <NuxtLink
+                  class="dropdown-item"
+                  :to="`/catalog/${category.trans}?gender=boy&rus=${category.title}`"
+                  :category="category.title"
+                  >{{ category.title }}</NuxtLink
+                >
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Войти</a>
@@ -46,33 +133,40 @@
 export default {
   name: 'Header',
   data: () => ({
-  width: 1000,
-  scroll: 0
-}),
-methods: {
-  updateWidth() {
-    this.width = window.innerWidth;
+    width: 1000,
+    scroll: 0,
+  }),
+  computed: {
+    categories_women() {
+      return this.$store.getters.CATEGORIES
+    },
+    categories_men() {
+      return this.$store.getters.CATEGORIES_MEN
+    },
   },
-  updateScroll() {
-    this.scroll = window.scrollY;
+  methods: {
+    updateWidth() {
+      this.width = window.innerWidth
+    },
+    updateScroll() {
+      this.scroll = window.scrollY
+    },
   },
-},
-mounted() {
-  window.addEventListener('resize', this.updateWidth);
-  this.width = window.innerWidth;
-  window.addEventListener('scroll', this.updateScroll);
-  this.scroll = window.scrollY;
-
-},
+  mounted() {
+    window.addEventListener('resize', this.updateWidth)
+    this.width = window.innerWidth
+    window.addEventListener('scroll', this.updateScroll)
+    this.scroll = window.scrollY
+  },
 }
 </script>
 <style scoped>
-*{
+* {
   margin: 0;
   box-sizing: border-box;
   padding: 0;
 }
-.navbar{
+.navbar {
   width: 100vw;
   transition: 0.3s ease;
 }

@@ -2,7 +2,8 @@
   <div class="hero">
     
    <div class="zig-zag text-center">
-  <h1><b>Платья</b></h1>
+  <h1><b v-if="this.$route.query.rus">{{this.$route.query.rus}}</b>
+  <b v-else>Каталог</b></h1>
 </div>
 </div>
 </template>

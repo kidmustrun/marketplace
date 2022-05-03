@@ -8,7 +8,11 @@
 <script>
 
 export default {
-  name: 'DefaultLayout'
+  name: 'DefaultLayout',
+    created() {
+    this.$store.dispatch('getCategories')
+    
+  },
 }
 </script>
 <style>

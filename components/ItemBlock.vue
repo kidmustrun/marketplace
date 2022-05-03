@@ -1,10 +1,10 @@
 <template>
   <div class="container">
               <ol class="breadcrumb mt-5">
-          <li class="breadcrumb-item"><a href="#">Каталог</a></li>
-          <li class="breadcrumb-item"><a href="#">Платье</a></li>
+          <li class="breadcrumb-item"><NuxtLink  :to="`/catalog/`">Каталог</NuxtLink></li>
+          <li class="breadcrumb-item"><NuxtLink  :to="`/catalog/${product.categoryTrans}?gender=${this.$route.query.gender}&rus=${this.$route.query.rus}`">{{product.category}}</NuxtLink></li>
           <li class="breadcrumb-item active" aria-current="page">
-            Платье "Весенний кэжуал"
+            {{product.title}}
           </li>
         </ol>
     <div class="row">
@@ -34,7 +34,7 @@
       </div>
       <div class="col-xl-6 col-md-12 col mt-5 p-xxl-0 p-5">
 
-        <h1>Платье "Весенний кэжуал"</h1>
+        <h1>{{product.title}}</h1>
         <select class="form-select" name="size">
           <option disabled selected>Размеры</option>
           <option value="xs">XS</option>
@@ -45,7 +45,7 @@
         </select>
         <div class="row mt-4">
           <div class="col-md-5 col-12 d-flex align-items-center">
-            <span class="price">5999 руб</span>
+            <span class="price">{{product.cost}} руб</span>
           </div>
           <div class="col-md-5 col-8">
             <button class="button_card">ДОБАВИТЬ В КОРЗИНУ</button>
@@ -106,10 +106,7 @@
               data-bs-parent="#accordionFlushExample"
             >
               <div class="accordion-body">
-                Placeholder content for this accordion, which is intended to
-                demonstrate the <code>.accordion-flush</code> class. This is the
-                second item's accordion body. Let's imagine this being filled
-                with some actual content.
+                {{product.desc}}
               </div>
             </div>
           </div>
@@ -147,7 +144,8 @@
     </div>
     <div class="similar_products mt-5">
       <h1>Другие товары продавца</h1>
-      <div class="row mt-4">
+      {{product}}
+      <!-- <div class="row mt-4">
         <div class="col">
           <ItemCard />
         </div>
@@ -163,7 +161,7 @@
         <div class="col">
           <ItemCard />
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -171,6 +169,11 @@
 <script>
 export default {
   name: 'ItemBlock',
+    computed: {
+    product() {
+      return this.$store.getters.PRODUCT
+    }
+  },
 }
 </script>
 <style scoped>

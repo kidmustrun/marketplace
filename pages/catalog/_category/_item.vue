@@ -7,6 +7,9 @@
 
 <script>
 export default {
-  name: 'IndexPage',
+  name: 'category-id',
+  created(){
+    this.$store.dispatch('getProduct', this.$route.params.item)
+  }
 }
 </script>

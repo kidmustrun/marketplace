@@ -7,6 +7,6 @@
 
 <script>
 export default {
-  name: 'category',
+  name: 'catalog',
 }
 </script>
