@@ -21,4 +21,10 @@ body {
     overflow-x: hidden;
     font-family: 'Jost', sans-serif;
 }
+.default{
+  box-sizing: border-box;
+  position: relative;
+  padding-bottom: calc(15rem + 200px);
+  min-height: 100vh;
+}
 </style>

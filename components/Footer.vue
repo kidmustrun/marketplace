@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer p-5 mt-3">
+  <footer class="footer">
     <div class="row">
       <div class="col-md">
         <ul>
@@ -47,7 +47,10 @@ export default {
 .footer {
   background-color: #b56a0e;
   color: #fff;
+  position: absolute;
   bottom: 0;
+  padding: 50px;
+  width: 100%;
 }
 .footer a {
   color: #fff;

@@ -3,7 +3,7 @@
   <div class="accent_border text-center">
 <span class="slogan">Высокачественная народная одежда от<br>российских производителей</span>
 <br>
-<button class="button_beige mt-5">Купить</button>
+<NuxtLink to="/catalog/" class="button_beige mt-5">Купить</NuxtLink>
 </div>
 </div>
 </template>
@@ -40,11 +40,14 @@ background-size: cover;
     padding: 20vh 30vw 20vh 5vw;
 }
 .button_beige{
+    display: inline-block;
     background: #B97E5E;
 border-radius: 50px;
 color: #fff;
+text-decoration: none;
 border: none;
 padding: 10px 30px;
 font-size: 24px;
 }
+
 </style>
