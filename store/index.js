@@ -1,10 +1,11 @@
-const url_base ="http://d754-95-165-9-250.ngrok.io/"
+const url_base = 'http://d754-95-165-9-250.ngrok.io/'
 export const state = () => ({
   token: '',
   categories_women: [],
   categories_men: [],
-  products: [{id: 1, title: "sfsaf"}],
-  product:{}
+  products: [{ id: 1, title: 'sfsaf' }],
+  product: {},
+  total_cost: 0,
 })
 export const getters = {
   TOKEN: (state) => {
@@ -22,6 +23,9 @@ export const getters = {
   PRODUCT: (state) => {
     return state.product
   },
+  TOTAL_COST: (state) => {
+    return state.total_cost
+  },
 }
 export const mutations = {
   SET_TOKEN: (state, payload) => {
@@ -31,8 +35,8 @@ export const mutations = {
     state.categories_women = payload
   },
   SET_CATEGORIES_MEN: (state) => {
-    const result = state.categories_women.filter((category) => 
-      category.not_for_men == 0
+    const result = state.categories_women.filter(
+      (category) => category.not_for_men == 0
     )
     state.categories_men = result
   },
@@ -42,35 +46,35 @@ export const mutations = {
   SET_PRODUCT: (state, payload) => {
     state.product = payload
   },
+  SET_TOTAL_COST: (state, payload) => {
+    state.total_cost = payload
+  },
+  ADD_TOTAL_COST: (state, payload) => {
+    state.total_cost += payload
+  },
+  REDUCE_TOTAL_COST: (state, payload) => {
+    state.total_cost -= payload
+  },
 }
 export const actions = {
   async getCategories(context) {
-    const response = await this.$axios.get(
-      `${url_base}categories`
-    )
+    const response = await this.$axios.get(`${url_base}categories`)
     context.commit('SET_CATEGORIES', response.data)
     context.commit('SET_CATEGORIES_MEN')
   },
-  async getProductsByCategory(context, params){
-    if(params.category){
-    const response = await this.$axios.get(
-      `${url_base}products/category/${params.category}/${params.gender}`
+  async getProductsByCategory(context, params) {
+    if (params.category) {
+      const response = await this.$axios.get(
+        `${url_base}products/category/${params.category}/${params.gender}`
       )
       context.commit('SET_PRODUCTS', response.data)
-    }
-    else {const response = await this.$axios.get(
-      `${url_base}products`
-      )
+    } else {
+      const response = await this.$axios.get(`${url_base}products`)
       context.commit('SET_PRODUCTS', response.data)
     }
-     
-    
-
   },
-  async getProduct(context, id){
-  const response = await this.$axios.get(
-    `${url_base}products/product/${id}`
-    )
+  async getProduct(context, id) {
+    const response = await this.$axios.get(`${url_base}products/product/${id}`)
     context.commit('SET_PRODUCT', response.data)
-}
+  },
 }

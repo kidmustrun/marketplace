@@ -22,7 +22,7 @@
           </tbody>
         </table>
       </div>
-      <h3 class="float-end">Итого: 7050 РУБ</h3>
+      <h3 class="float-end">Итого: {{total_cost}} РУБ</h3>
       <br>
       <br>
       <button class="button_create px-md-5 py-md-2 p-2 float-end">Оформить заказ</button>
@@ -33,6 +33,11 @@
 <script>
 export default {
   name: 'IndexPage',
+    computed: {
+    total_cost() {
+      return this.$store.getters.TOTAL_COST
+    }
+  },
 }
 </script>
 <style scoped>

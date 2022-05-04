@@ -34,7 +34,7 @@
         />
       </div>
     </td>
-    <td>{{full_cost}} РУБ</td>
+    <td>{{ full_cost }} РУБ</td>
   </tr>
 </template>
 
@@ -45,7 +45,7 @@ export default {
     return {
       count: 1,
       cost: 2050,
-      full_cost: 2050
+      full_cost: 2050,
     }
   },
   methods: {
@@ -53,12 +53,17 @@ export default {
       if (this.count >= 2) {
         this.count--
         this.full_cost = this.cost * this.count
+         this.$store.commit('REDUCE_TOTAL_COST', this.cost)
       }
     },
     addOne() {
       this.count++
       this.full_cost = this.cost * this.count
+       this.$store.commit('ADD_TOTAL_COST', this.cost)
     },
+  },
+  mounted() {
+    this.$store.commit('ADD_TOTAL_COST', this.full_cost)
   },
 }
 </script>
@@ -75,7 +80,7 @@ img {
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0; 
+  -webkit-appearance: none;
+  margin: 0;
 }
 </style>
