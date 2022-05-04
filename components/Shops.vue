@@ -1,7 +1,7 @@
 <template>
 <div class="container text-center">
     <p>У вас пока еще нет ни одного магазина, но вы можете создать его</p>
-    <button class="button_create">+ Создать магазин</button>
+    <NuxtLink to="/account/createshop" class="button_create button_create px-md-5 py-md-2 p-2">+ Создать магазин</NuxtLink>
 </div>
 </template>
 
@@ -19,8 +19,8 @@ p{
 border-radius: 10px;
 color: #fff;
 border: none;
-padding: 10px 60px;
-transition: 0.3s ease
+transition: 0.3s ease;
+text-decoration: none;
 }
 .button_create:hover{
     background: #144169;

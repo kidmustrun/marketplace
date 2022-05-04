@@ -1,5 +1,9 @@
 <template>
-<p>Orders</p>
+<div class="container">
+    <OrderCard/>
+     <OrderCard/>
+      <OrderCard/>
+</div>
 </template>
 
 <script>
