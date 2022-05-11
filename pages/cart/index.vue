@@ -27,7 +27,11 @@
       <br>
       <button class="button_create px-md-5 py-md-2 p-2 float-end">Оформить заказ</button>
     </div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Запустите демо модального окна
+</button>
   </div>
+  
 </template>
 
 <script>
