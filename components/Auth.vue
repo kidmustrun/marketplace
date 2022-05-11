@@ -41,7 +41,7 @@ export default {
     width: 100vw;
     min-height: 1090px;
     margin-bottom: -260px;
-    padding-top: 180px; 
+    padding-top: 5vh; 
 }
 .container-auth{
     width: 35vw;
