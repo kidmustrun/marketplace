@@ -1,9 +1,10 @@
-const url_base = 'http://d754-95-165-9-250.ngrok.io/'
+const url_base = 'http://564e-176-59-43-77.ngrok.io/'
 export const state = () => ({
+  url_base: 'http://564e-176-59-43-77.ngrok.io',
   token: '',
   categories_women: [],
   categories_men: [],
-  products: [{ id: 1, title: 'sfsaf' }],
+  products: [{ id: 1, title: 'sfsaf', category_name: 'Джинсы' }],
   product: {},
   total_cost: 0,
 })
@@ -26,10 +27,18 @@ export const getters = {
   TOTAL_COST: (state) => {
     return state.total_cost
   },
+  URL_BASE: (state) => {
+    return state.url_base
+  },
 }
 export const mutations = {
   SET_TOKEN: (state, payload) => {
     state.token = payload
+    document.cookie = `token=${payload}`
+  },
+  DELETE_TOKEN: (state) => {
+    state.token = ''
+    document.cookie = `token=""`
   },
   SET_CATEGORIES: (state, payload) => {
     state.categories_women = payload
@@ -76,5 +85,25 @@ export const actions = {
   async getProduct(context, id) {
     const response = await this.$axios.get(`${url_base}products/product/${id}`)
     context.commit('SET_PRODUCT', response.data)
+  },
+  async searchProduct(context, query) {
+    const response = await this.$axios.get(`${url_base}products/find/${query}`)
+    context.commit('SET_PRODUCTS', response.data)
+  },
+  async register(context, user) {
+    const response = await this.$axios.post(`${url_base}register`, user)
+    context.commit('SET_TOKEN', response.data[1])
+  },
+  async login(context, user) {
+    if (!document.cookie.token) {
+      const response = await this.$axios.post(`${url_base}login`, user)
+      context.commit('SET_TOKEN', response.data[1])
+    } else context.commit('SET_TOKEN', document.cookie.token)
+  },
+  async logout(context) {
+    const response = await this.$axios.post(`${url_base}logout`, null, {
+      Authorization: document.cookie.token,
+    })
+    context.commit('DELETE_TOKEN')
   },
 }

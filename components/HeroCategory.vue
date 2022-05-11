@@ -2,14 +2,21 @@
   <div class="hero">
     
    <div class="zig-zag text-center">
-  <h1><b v-if="this.$route.query.rus">{{this.$route.query.rus}}</b>
+  <h1><b v-if="products[0] && this.$route.params.category">{{products[0].category_name}}</b>
   <b v-else>Каталог</b></h1>
+  <b v-if="this.$route.query.search">Результаты по запросу "{{this.$route.query.search}}"</b>
+  
 </div>
 </div>
 </template>
 <script>
 export default {
   name: 'HeroCategory',
+  computed: {
+    products() {
+      return this.$store.getters.PRODUCTS
+    }
+  },
 }
 </script>
 <style scoped>

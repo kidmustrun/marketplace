@@ -35,8 +35,8 @@
             >
               <li v-for="category in categories_women" :key="category.id">
                 <NuxtLink
-                  class="dropdown-item"
-                  :to="`/catalog/${category.trans}?gender=female&rus=${category.title}`"
+                  class="dropdown-item p-1"
+                  :to="`/catalog/${category.trans}?gender=female`"
                   >{{ category.title }}</NuxtLink
                 >
               </li>
@@ -59,8 +59,8 @@
             >
               <li v-for="category in categories_men" :key="category.id">
                 <NuxtLink
-                  class="dropdown-item"
-                  :to="`/catalog/${category.trans}?gender=male&rus=${category.title}`"
+                  class="dropdown-item p-1"
+                  :to="`/catalog/${category.trans}?gender=male`"
                   >{{ category.title }}</NuxtLink
                 >
               </li>
@@ -83,8 +83,8 @@
             >
               <li v-for="category in categories_women" :key="category.id">
                 <NuxtLink
-                  class="dropdown-item"
-                  :to="`/catalog/${category.trans}?gender=girl&rus=${category.title}`"
+                  class="dropdown-item p-1"
+                  :to="`/catalog/${category.trans}?gender=girl`"
                   >{{ category.title }}</NuxtLink
                 >
               </li>
@@ -107,8 +107,8 @@
             >
               <li v-for="category in categories_men" :key="category.id">
                 <NuxtLink
-                  class="dropdown-item"
-                  :to="`/catalog/${category.trans}?gender=boy&rus=${category.title}`"
+                  class="dropdown-item p-1"
+                  :to="`/catalog/${category.trans}?gender=boy`"
                   :category="category.title"
                   >{{ category.title }}</NuxtLink
                 >
@@ -116,12 +116,12 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Войти</a>
+            <NuxtLink class="nav-link active" aria-current="page" to="/login">Войти</NuxtLink>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"
+            <NuxtLink class="nav-link active" aria-current="page" to="/cart"
               ><img src="~/assets/cart.svg"
-            /></a>
+            /></NuxtLink>
           </li>
         </ul>
       </div>

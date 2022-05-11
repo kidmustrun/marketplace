@@ -2,7 +2,7 @@
   <div class="container">
               <ol class="breadcrumb mt-5">
           <li class="breadcrumb-item"><NuxtLink  :to="`/catalog/`">Каталог</NuxtLink></li>
-          <li class="breadcrumb-item"><NuxtLink  :to="`/catalog/${product.categoryTrans}?gender=${this.$route.query.gender}&rus=${this.$route.query.rus}`">{{product.category}}</NuxtLink></li>
+          <li class="breadcrumb-item"><NuxtLink  :to="`/catalog/${product.categoryTrans}?gender=${this.$route.query.gender}`">{{product.category}}</NuxtLink></li>
           <li class="breadcrumb-item active" aria-current="page">
             {{product.title}}
           </li>
@@ -11,23 +11,14 @@
       <div class="col-xl-6 col-md-12 col-12 text-center">
         <div class="row">
           <div class="d-flex flex-xxl-column flex-row col-xxl-2 order-xxl-first order-last justify-content-center">
-            <div class="prewiew mt-3 me-xxl-0 me-2 active_img">
-              <img src="~/assets/dress_in_block.png" />
-            </div>
-            <div class="prewiew mt-3 me-xxl-0 me-2">
-              <img src="~/assets/dress_in_block.png" />
-            </div>
-            <div class="prewiew mt-3 me-xxl-0 me-2">
-              <img src="~/assets/dress_in_block.png" />
-            </div>
-            <div class="prewiew mt-3 me-xxl-0 me-2">
-              <img src="~/assets/dress_in_block.png" />
+            <div v-for="photo in product.photos" :key="photo" class="prewiew mt-3 me-xxl-0 me-2">
+              <img :src="url +photo" />
             </div>
           </div>
 
           <div class="col-xxl-10">
             <div class="full-size mt-5">
-              <img src="~/assets/dress_in_block.png" />
+              <img v-if="product.photos" :src="url + product.photos[0]" />
             </div>
           </div>
         </div>
@@ -80,9 +71,7 @@
               data-bs-parent="#accordionFlushExample"
             >
               <div class="accordion-body">
-                Placeholder content for this accordion, which is intended to
-                demonstrate the <code>.accordion-flush</code> class. This is the
-                first item's accordion body.
+                Подробности доставки и возврата
               </div>
             </div>
           </div>
@@ -130,12 +119,7 @@
               data-bs-parent="#accordionFlushExample"
             >
               <div class="accordion-body">
-                Placeholder content for this accordion, which is intended to
-                demonstrate the <code>.accordion-flush</code> class. This is the
-                third item's accordion body. Nothing more exciting happening
-                here in terms of content, but just filling up the space to make
-                it look, at least at first glance, a bit more representative of
-                how this would look in a real-world application.
+                Подробности оплаты
               </div>
             </div>
           </div>
@@ -144,7 +128,6 @@
     </div>
     <div class="similar_products mt-5">
       <h1>Другие товары продавца</h1>
-      {{product}}
       <!-- <div class="row mt-4">
         <div class="col">
           <ItemCard />
@@ -172,13 +155,18 @@ export default {
     computed: {
     product() {
       return this.$store.getters.PRODUCT
-    }
+    },
+    url(){
+       return this.$store.getters.URL_BASE
+  },
   },
 }
 </script>
 <style scoped>
 .prewiew img {
   height: 20vh;
+  width: 7.5vw;
+  object-fit: cover;
   opacity: 0.5;
     transition: 0.3s ease;
 }
@@ -188,6 +176,7 @@ export default {
 }
 .full-size img {
   height: 80vh;
+  width: 30vw;
   object-fit: cover;
 }
 .active_img img {
