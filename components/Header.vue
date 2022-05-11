@@ -116,7 +116,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Войти</a>
+            <NuxtLink to="/authorization/" class="nav-link active" aria-current="page" href="#">Войти</NuxtLink>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#"
