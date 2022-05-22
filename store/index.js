@@ -1,7 +1,14 @@
-const url_base = 'http://564e-176-59-43-77.ngrok.io/'
+import Cookies from 'js-cookie'
+const requestHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  Accept: "application/json",
+  "Content-Type": "application/json",
+  "X-Requested-With": "XMLHttpRequest",
+};
+const url_base = 'http://marketplace.std-941.ist.mospolytech.ru/'
 export const state = () => ({
-  url_base: 'http://564e-176-59-43-77.ngrok.io',
-  token: '',
+  url_base: 'http://marketplace.std-941.ist.mospolytech.ru',
+  token: Cookies.get('token'),
   categories_women: [],
   categories_men: [],
   products: [{ id: 1, title: 'sfsaf', category_name: 'Джинсы' }],
@@ -9,8 +16,8 @@ export const state = () => ({
   total_cost: 0,
 })
 export const getters = {
-  TOKEN: (state) => {
-    return state.token
+  TOKEN: () => {
+    return Cookies.get('token')
   },
   CATEGORIES: (state) => {
     return state.categories_women
@@ -33,8 +40,9 @@ export const getters = {
 }
 export const mutations = {
   SET_TOKEN: (state, payload) => {
-    state.token = payload
+   if(!document.cookie.token)
     document.cookie = `token=${payload}`
+    state.token =  payload
   },
   DELETE_TOKEN: (state) => {
     state.token = ''
@@ -91,17 +99,18 @@ export const actions = {
     context.commit('SET_PRODUCTS', response.data)
   },
   async register(context, user) {
-    const response = await this.$axios.post(`${url_base}register`, user)
-    context.commit('SET_TOKEN', response.data[1])
+    const response = await this.$axios.$post(`${url_base}register`, user, requestHeaders)
+    context.commit('SET_TOKEN', response[1])
+    location.reload()
   },
   async login(context, user) {
-    if (!document.cookie.token) {
-      const response = await this.$axios.post(`${url_base}login`, user)
-      context.commit('SET_TOKEN', response.data[1])
-    } else context.commit('SET_TOKEN', document.cookie.token)
+      const response = await this.$axios.$post(`${url_base}login`, user, requestHeaders);
+      context.commit('SET_TOKEN', response[1])
+      location.reload()
+    
   },
   async logout(context) {
-    const response = await this.$axios.post(`${url_base}logout`, null, {
+    const response = await this.$axios.$post(`${url_base}logout`, null, {
       Authorization: document.cookie.token,
     })
     context.commit('DELETE_TOKEN')
