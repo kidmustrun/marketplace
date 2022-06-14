@@ -44,7 +44,6 @@
         <b>&#9587;&nbsp;&nbsp;Удалить</b>
       </button>
     </td>
-    {{product}}
   </tr>
 </template>
 
