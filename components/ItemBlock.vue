@@ -26,20 +26,16 @@
       <div class="col-xl-6 col-md-12 col mt-5 p-xxl-0 p-5">
 
         <h1>{{product.title}}</h1>
-        <select class="form-select" name="size">
-          <option disabled selected>Размеры</option>
-          <option value="xs">XS</option>
-          <option value="s">S</option>
-          <option value="m">M</option>
-          <option value="l">L</option>
-          <option value="xl">XL</option>
+        <select v-model="size" class="form-select">
+          <option selected disabled value="">Размеры</option>
+          <option v-for="product in product.storage" :key="product.id" :value="product.id">{{product.size}}</option>
         </select>
         <div class="row mt-4">
           <div class="col-md-5 col-12 d-flex align-items-center">
             <span class="price">{{product.cost}} руб</span>
           </div>
           <div class="col-md-5 col-8">
-            <button class="button_card">ДОБАВИТЬ В КОРЗИНУ</button>
+            <button class="button_card" @click="addProduct">ДОБАВИТЬ В КОРЗИНУ</button>
           </div>
           <div class="col-md-2 col-4">
             <button class="button_card button_like">
@@ -152,6 +148,11 @@
 <script>
 export default {
   name: 'ItemBlock',
+  data(){
+    return{
+      size: ''
+    }
+  },
     computed: {
     product() {
       return this.$store.getters.PRODUCT
@@ -160,6 +161,12 @@ export default {
        return this.$store.getters.URL_BASE
   },
   },
+  methods:{
+    addProduct(){
+      if(this.size != "Размеры" && this.size!=0)
+      this.$store.dispatch('addProductInCart', {product: +this.size, count: 1})
+    }
+  }
 }
 </script>
 <style scoped>

@@ -11,7 +11,8 @@ export default {
   name: 'DefaultLayout',
     created() {
     this.$store.dispatch('getCategories')
-    
+    this.$store.dispatch('getUser')
+    this.$store.dispatch('getAddresses')
   },
 }
 </script>

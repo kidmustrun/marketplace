@@ -9,10 +9,11 @@
             class="form-control"
             id="shop_title"
             placeholder="Название магазина"
+            v-model="title"
           />
         </div>
-        <NuxtLink to="/account" class="button_create px-md-5 py-md-2 p-2"
-          >Создать магазин</NuxtLink
+        <button class="button_create px-md-5 py-md-2 p-2" @click="createShop"
+          >Создать магазин</button
         >
       </div>
     </div>
@@ -22,6 +23,16 @@
 <script>
 export default {
   name: 'CreateShop',
+  data(){
+    return{
+      title: ''
+    }
+  },
+  methods:{
+    createShop(){
+      this.$store.dispatch('createShop', {"shop_name": this.title, "doc_number": 2325})
+    }
+  }
 }
 </script>
 <style scoped>

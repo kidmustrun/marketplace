@@ -1,13 +1,17 @@
 <template>
   <tr>
     <td>
-      <img src="~/assets/dress_in_block.png" class="img-fluid rounded-start" />
+      <img
+        v-if="product.product.photos"
+        :src="url + product.product.photos[0]"
+        class="img-fluid rounded-start"
+      />
     </td>
     <td>
-      Женское платье<br /><b>Звезда взошла</b><br /><br />Размер 48, M<br />Артикул:
-      09ОАМС5
+      <b>{{ product.product.title }}</b
+      ><br />Размер {{product.size}}<br />Артикул: 09ОАМС5
     </td>
-    <td>2050 РУБ</td>
+    <td>{{ product.product.cost }}</td>
     <td>
       <div class="input-group w-50 mx-auto">
         <input
@@ -35,31 +39,49 @@
       </div>
     </td>
     <td>{{ full_cost }} РУБ</td>
+    <td>
+      <button id="button_delete" class="counting p-3" @click="deleteProduct">
+        <b>&#9587;&nbsp;&nbsp;Удалить</b>
+      </button>
+    </td>
+    {{product}}
   </tr>
 </template>
 
 <script>
 export default {
   name: 'CartItem',
+  props: ['product'],
   data() {
     return {
       count: 1,
-      cost: 2050,
-      full_cost: 2050,
     }
+  },
+  computed: {
+    full_cost() {
+      return this.product.product.cost * this.count
+    },
+    url() {
+      return this.$store.getters.URL_BASE
+    },
   },
   methods: {
     reduceOne() {
       if (this.count >= 2) {
         this.count--
-        this.full_cost = this.cost * this.count
-         this.$store.commit('REDUCE_TOTAL_COST', this.cost)
+        this.full_cost = +this.product.product.cost * this.count
+        this.$store.commit('REDUCE_TOTAL_COST', +this.product.product.cost)
+        this.$store.commit('CHANGE_COUNT_IN_CART', {id: this.product.product.id, count: this.count})
       }
     },
     addOne() {
       this.count++
-      this.full_cost = this.cost * this.count
-       this.$store.commit('ADD_TOTAL_COST', this.cost)
+      this.full_cost = +this.product.product.cost * this.count
+      this.$store.commit('ADD_TOTAL_COST', +this.product.product.cost)
+      this.$store.commit('CHANGE_COUNT_IN_CART', {id: this.product.product.id, count: this.count})
+    },
+    deleteProduct() {
+      this.$store.dispatch('deleteProduct', { product: this.product.product_id })
     },
   },
   mounted() {

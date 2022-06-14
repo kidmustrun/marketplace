@@ -90,7 +90,7 @@
               </li>
             </ul>
           </li>
-           <li class="nav-item dropdown">
+          <li class="nav-item dropdown">
             <span
               class="nav-link dropdown-toggle"
               id="navbarDropdownMenuLink"
@@ -116,7 +116,20 @@
             </ul>
           </li>
           <li class="nav-item">
-            <NuxtLink to="/authorization/" class="nav-link active" aria-current="page" href="#">Войти</NuxtLink>
+            <NuxtLink v-if="!user.first_name"
+              to="/authorization/"
+              class="nav-link active"
+              aria-current="page"
+              href="#"
+              >Войти</NuxtLink
+            >
+            <NuxtLink v-else
+              to="/account"
+              class="nav-link active"
+              aria-current="page"
+              href="#"
+              >{{user.first_name}}</NuxtLink
+            >
           </li>
           <li class="nav-item">
             <NuxtLink class="nav-link active" aria-current="page" to="/cart"
@@ -130,6 +143,7 @@
 </template>
 
 <script>
+import Cookies from 'js-cookie'
 export default {
   name: 'Header',
   data: () => ({
@@ -142,6 +156,9 @@ export default {
     },
     categories_men() {
       return this.$store.getters.CATEGORIES_MEN
+    },
+    user() {
+      return this.$store.getters.USER
     },
   },
   methods: {

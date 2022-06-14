@@ -4,7 +4,7 @@
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center">
  <h1><b>Личный кабинет</b></h1>
- <a href="#">Выйти</a>
+ <span class="link" @click="logout">Выйти</span>
         </div>
      
       <div class="row">
@@ -67,6 +67,9 @@ export default {
         this.shops = true
       }
     },
+    logout(){
+       this.$store.dispatch('logout')
+    }
   },
 }
 </script>
@@ -77,5 +80,9 @@ export default {
 }
 .active {
   color: #000 !important;
+}
+.link{
+  text-decoration: #000 underline;
+  cursor: pointer;
 }
 </style>
